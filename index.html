@@ -14,27 +14,28 @@
             height: 100vh;
             margin: 0;
         }
-        .signup-container {
+        .container {
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        .signup-container h2 {
+        .container h2 {
             margin-bottom: 20px;
             color: #333;
         }
-        .signup-container form {
+        .container form {
             display: flex;
             flex-direction: column;
         }
-        .signup-container form input {
+        .container form input {
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        .signup-container form button {
+        .container form button {
             padding: 10px;
             background-color: #28a745;
             color: #fff;
@@ -42,22 +43,53 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .signup-container form button:hover {
+        .container form button:hover {
             background-color: #218838;
+        }
+        .welcome-container {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .welcome-container h2 {
+            color: #333;
+        }
+        .welcome-container p {
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-<div class="signup-container">
+<div class="container" id="signup-container">
     <h2>Signup</h2>
-    <form action="/submit-signup" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
+    <form id="signup-form">
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
         <button type="submit">Sign Up</button>
     </form>
 </div>
+
+<div class="welcome-container" id="welcome-container">
+    <h2>Welcome!</h2>
+    <p>You have successfully signed up.</p>
+</div>
+
+<script>
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Hide the signup form
+        document.getElementById('signup-container').style.display = 'none';
+
+        // Show the welcome message
+        document.getElementById('welcome-container').style.display = 'block';
+    });
+</script>
 
 </body>
 </html>
